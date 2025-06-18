@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(content = ~{::content}, scripts = ~{::scripts})}">
+<head>
+    <title>Register - ExpenseGuard</title>
+</head>
+<body>
+    <!-- This 'content' block will be injected into the layout -->
+    <div th:fragment="content">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Create an Account</h2>
+
+                        <!-- The Registration Form: JS will listen for its submission -->
+                        <form id="register-form">
+                            <!-- JS will inject error messages here -->
+                            <div id="alert-placeholder"></div>
+
+                            <div class="mb-3">
+                                <label for="firstname" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstname" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastname" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastname" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" required>
+                            </div>
+                            <div class="d-grid">
+                                <!-- Register Button: JS will add/remove the spinner -->
+                                <button type="submit" class="btn btn-primary" id="register-btn">
+                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                    Sign Up
+                                </button>
+                            </div>
+                        </form>
+                        <p class="mt-3 text-center">Already have an account? <a href="/login">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This 'scripts' block injects our auth.js file into the layout -->
+    <th:block th:fragment="scripts">
+        <script th:src="@{/js/auth.js}"></script>
+    </th:block>
+</body>
+</html>
